@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doraemon Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to Doraemon's World!</h1>
+        </header>
+        <main>
+            <img src="https://p4.wallpaperbetter.com/wallpaper/670/488/988/5bd2b86064e76-wallpaper-preview.jpg" alt="Doraemon">
+            <p>Doraemon is a robotic cat who travels back in time from the 22nd century to aid a schoolboy, Nobita Nobi.</p>
+            <button class="btn" onclick="alert('WANT ANY GADGET?')">DORARA</button>
+            <h2>Select a Doraemon Movie</h2>
+            <div class="movie-selection">
+                <img src="https://mypotatogames.com/wp-content/uploads/2019/11/Screen-Shot-2019-11-14-at-8.37.08-AM-780x470.jpg" alt="Movie 1" class="movie-img">
+                <img src="https://wallpaperaccess.com/full/2319720.jpg" alt="Movie 2" class="movie-img">
+                <img src="https://wallpaperaccess.com/full/2319707.jpg" alt="Movie 3" class="movie-img">
+                <img src="https://otakusnotes.com/wp-content/uploads/2021/01/List-of-all-Doraemon-Movies.jpg" alt="Movie 4" class="movie-img">
+            </div>
+            <div id="notification" class="notification"></div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const movieImages = document.querySelectorAll('.movie-img');
+            const notification = document.getElementById('notification');
+
+            movieImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    const movieTitle = img.alt;
+                    notification.innerHTML = `Selected: ${movieTitle}<br>Watch the movie`;
+                    if (img.requestFullscreen) {
+                        img.requestFullscreen();
+                    } else if (img.mozRequestFullScreen) { 
+                        img.mozRequestFullScreen();
+                    } else if (img.webkitRequestFullscreen) { 
+                        img.webkitRequestFullscreen();
+                    } else if (img.msRequestFullscreen) {
+                        img.msRequestFullscreen();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
