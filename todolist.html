@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO LIST</title>
+    <style>
+        body {
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            background-image: url('https://images.alphacoders.com/134/1344524.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 10% center;
+        }
+        .container {
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            overflow-y: auto;
+            min-height: 400px;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 20px 30px;
+            margin-bottom: 10px;
+            background-color:black;
+            color:white;
+            border-radius: 50px;
+            cursor: pointer; 
+            transition: background-color 0.3s ease;
+        }
+        li.completed {
+            text-decoration: line-through; 
+            background-color: green; 
+            color:white; 
+            opacity: 20px;
+        }
+        #textin {
+            width: calc(100% - 40px);
+            margin: 20px 0;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 50px;
+            border: 1px solid #ccc; 
+            box-sizing: border-box;
+        }
+        #but {
+            text-align: center;
+        }
+        button {
+            color: white;
+            background-color: green;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px; 
+        }
+        #refresh{
+            color: white;
+            background-color: #007bff; 
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #refresh:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TO--DO LIST</h1>
+        <input type="text" id="textin" placeholder="Enter a Task">
+        <div id="but">
+            <button onclick="addtask()">Add a Task</button>
+            <button id="refresh" onclick="refreshl()">Refresh</button>
+        </div>
+        <ul id="list"></ul>
+    </div>
+    <script>
+        function addtask() {
+            var textin = document.getElementById("textin");
+            var list = document.getElementById("list");
+            var task = textin.value;
+            if (task === "") {
+                alert("Please enter a task");
+                return;
+            }
+            var li = document.createElement("li");
+            li.textContent = task;
+            li.addEventListener("click", function() {
+                if (li.classList.contains("completed")) {
+                    list.removeChild(li);
+                } else {
+                    li.classList.add("completed");
+                    list.appendChild(li);
+                }
+            });
+            list.appendChild(li); 
+            textin.value = ""; 
+        }
+        function refreshl() {
+            var list = document.getElementById("list");
+            list.innerHTML = "";
+        }
+    </script>
+</body>
+</html>
